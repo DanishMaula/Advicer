@@ -34,7 +34,7 @@ class AdvicerPage extends StatelessWidget {
               //  AdviceField(advice: 'YESYESYESYESYES'),
               
             )),
-            const SizedBox(height: 200, child: Center(child: CustomButton()))
+            SizedBox(height: 200, child: Center(child: CustomButton()))
           ],
         ),
       ),

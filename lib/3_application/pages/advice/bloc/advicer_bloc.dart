@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+part 'advicer_event.dart';
+part 'advicer_state.dart';
+
+class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
+  AdvicerBloc() : super(AdvicerInitial()) {
+    
+    on<AdviceRequestedEvent>((event, emit) async {
+      emit(AdvicerStateLoading());
+      //execute business logic
+      // for example get and advice
+      debugPrint('fake get advice');
+      await Future.delayed(Duration(seconds: 3), () {});
+      debugPrint('got advice');
+      emit(AdvicerStateLoaded(advice: 'Fake advice to test bloC'));
+    });
+  }
+}
