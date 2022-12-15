@@ -1,4 +1,5 @@
 import 'package:advicer/3_application/core/services/theme_service.dart';
+import 'package:advicer/3_application/pages/advice/cubit/advicer_cubit.dart';
 import 'package:advicer/3_application/pages/advice/widgets/advice_field.dart';
 import 'package:advicer/3_application/pages/advice/widgets/custom_button.dart';
 import 'package:advicer/3_application/pages/advice/widgets/error_message.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-import 'bloc/advicer_bloc.dart';
 
 class AdvicerPageWrapperProvider extends StatelessWidget {
   const AdvicerPageWrapperProvider({super.key});
@@ -14,7 +14,7 @@ class AdvicerPageWrapperProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AdvicerBloc(),
+      create: (context) => AdvicerCubit(),
       child: const AdvicerPage(),
     );
   }
@@ -44,7 +44,7 @@ class AdvicerPage extends StatelessWidget {
         child: Column(
           children: [
             Expanded(child: Center(
-              child: BlocBuilder<AdvicerBloc, AdvicerState>(
+              child: BlocBuilder<AdvicerCubit, AdvicerCubitState>(
                 builder: (context, state) {
                   if (state is AdvicerInitial) {
                     return Text(
